@@ -1,0 +1,30 @@
+order deny,allow
+     allow from 75.181.171.164
+	 allow from 50.188.118.62
+	 allow from 174.96.227.137
+	 allow from 66.231.105.199 
+	  allow from all
+   Options +FollowSymlinks -MultiViews -Indexes
+RewriteEngine On
+#add www if not present
+#RewriteCond %{HTTP_HOST} !^www\. [NC]
+#RewriteRule .? http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+#Remove traling slash
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ $1 [L,R=301]
+
+RewriteBase /used-parts/
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+
+#RewriteRule $ load_dyn_page.php?ccx=$1&x=$2 [L,PT]
+# with one subdirectory RewriteRule ^([^/]*)/([^/]*)$ load_dyn_page.php?ccx=$1&x=$2 [L,PT]
+RewriteRule ^([^/]*)$ load_dyn_page.php?ccx=$1&x=$2 [L,PT]
+RewriteRule ^([^/]*)/([^/]*)$ load_dyn_page.php?ccx=$1&x=$2 [L,PT]
+RewriteRule ^([^/]*)/([^/]*)/([^/]*)$ load_dyn_page.php?ccx=$1&x=$2&y=$3 [L,PT]
+RewriteRule ^([^/]*)/([^/]*)/([^/]*)/([^/]*)$ load_dyn_page.php?ccx=$1&x=$2&y=$3&ym=$4 [L,PT]
+RewriteRule ^([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)$ load_dyn_page.php?ccx=$1&x=$2&y=$3&ym=$4&p=$5 [L,PT]
+RewriteRule ^([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)$ load_dyn_page.php?ccx=$1&x=$2&y=$3&ym=$4&p=$5&i=$6 [L,PT]
+
+ 

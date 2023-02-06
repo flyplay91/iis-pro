@@ -1,0 +1,506 @@
+
+
+
+
+.iisitem.list-group-item
+{
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+.iisitem.list-group-item:nth-of-type(odd):hover,.iisitem.list-group-item:hover
+{
+    background: #428bca;
+}
+
+.iisitem.list-group-item .list-group-image
+{
+    margin-right: 10px;
+}
+.iisitem.list-group-item .thumbnail
+{
+    margin-bottom: 0px;
+}
+.iisitem.list-group-item .caption
+{
+    padding: 9px 9px 0px 9px;
+}
+.iisitem.list-group-item:nth-of-type(odd)
+{
+    background: #eeeeee;
+}
+
+.iisitem.list-group-item:before, .iisitem.list-group-item:after
+{
+    display: table;
+    content: " ";
+}
+
+.iisitem.list-group-item img
+{
+    float: left;
+}
+.iisitem.list-group-item:after
+{
+    clear: both;
+}
+.list-group-item-text
+{
+    margin: 0 0 11px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.items {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  counter-reset: done-items undone-items;
+}
+
+h2.iish2 {
+  position: relative;
+  margin: 0;
+  padding: 10px 0;
+  font-size: 1.2em;
+}
+
+h2.iish2::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: -20px;
+  width: 5px;
+  background-color: #435757;
+}
+
+
+
+.iisdone {
+  order: 1;
+}
+
+.iisdone::after {
+  content: ' (' counter(done-items) ')';
+}
+
+.iisundone {
+  order: 3;
+}
+
+.iisundone::after {
+  content: ' (' counter(undone-items) ')';
+}
+
+/* hide inputs offscreen, but at the same vertical positions as the correpsonding labels, so that tabbing scrolls the viewport as expected */
+input.iisappfilcbx {
+  display: block;
+  height: 53px;
+  margin: 0 0 -53px -9999px !important;
+  order: 4;
+  outline: none;
+  counter-increment: undone-items;
+}
+
+input.iisappfilcbx:checked {
+  order: 2;
+  counter-increment: done-items;  
+}
+
+label.iisappfilcbxlabel {
+  display: block;
+  position: relative;
+ padding: 6px 0 6px 32px;
+  border-top: 1px dashed #fff;
+  order: 4;
+  cursor: pointer;
+  animation: undone .5s;
+    font-size: 12px;
+}
+
+label.iisappfilcbxlabel::before {
+  content: '\f10c'; /* circle outline */
+  display: block;
+  position: absolute;
+  top: 11px;
+  left: 10px;
+  font: 1.5em 'FontAwesome';
+}
+
+label.iisappfilcbxlabel:hover, input:focus + label {
+  background-color: rgba(255, 255, 255, .2);
+}
+
+input.iisappfilcbx:checked + label {
+  order: 2;
+  animation: done .5s;
+}
+
+input.iisappfilcbx:checked + label::before {
+  content: '\f058'; /* circle checkmark */
+}
+
+@keyframes done {
+  0% {
+    opacity: 0;
+    background-color: rgba(255, 255, 255, .4);
+    transform: translateY(20px);
+  }
+  50% {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, .4);
+  }
+}
+
+@keyframes undone {
+  0% {
+    opacity: 0;
+    background-color: rgba(255, 255, 255, .4);
+    transform: translateY(-20px);
+  }
+  50% {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, .4);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.iismodal,
+.iismodal-box {
+  z-index: 900;
+}
+
+.iismodal-sandbox {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: transparent;
+}
+
+.iismodal {
+  display: none; 
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgb(0,0,0);
+  background: rgba(0,0,0,.8);
+  overflow: auto;
+	z-index: 10000000;
+}
+
+.iismodal-box {
+  position: relative;
+  width: 80%;
+  max-width: 920px;
+  margin: 10px auto;
+  animation-name: modalbox;
+  animation-duration: .3s;
+  animation-timing-function: ease-out;
+}
+
+.iismodal-header {
+  padding: 20px 40px;
+  background: #546E7A;
+  color: #ffffff;
+}
+
+.iismodal-body {
+  background: #ECEFF1;
+  padding: 60px 40px;
+}
+
+/* Close Button */
+.iisclose-modal {
+  text-align: right;
+  cursor: pointer;
+}
+
+/* Animation */
+@-webkit-keyframes modalbox {
+  0% {
+    top: -250px; 
+    opacity: 0;
+  }
+  100% {
+    top: 0; 
+    opacity: 1;
+  }
+}
+
+@keyframes modalbox {
+  0% {
+    top: -250px; 
+    opacity: 0;
+  }
+  100% {
+    top: 0; 
+    opacity: 1;
+  }
+}
+
+/* Aditional Styles */
+* {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+}
+
+
+
+
+.modal-trigger, button {
+  top: 50%;
+  left: 50%;
+  padding: 20px 40px;
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  text-decoration: none;
+}
+
+.modal-trigger {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  transition: ease .2s;
+}
+
+button {
+  border: 1px solid #333333;
+  outline: none;
+  color: #333333;
+}
+
+.modal-trigger:hover {
+  padding: 20px 60px;
+}
+
+
+
+
+
+
+
+
+.shopping_cart {
+
+	font-size: 12px;
+
+}
+
+.shopping_cart h2 {
+
+	font-size: 14px;
+
+}
+
+.shopping_cart img {
+
+	border: none;
+
+}
+
+.shopping_cart input {
+
+	width: auto !important;
+
+}
+
+.wp-cart-button-form input {
+
+	width: auto !important;
+
+}
+
+.wp_cart_checkout_button:hover {
+
+	opacity: 0.7;
+
+}
+
+.wp_cart_button:hover {
+
+	opacity: 0.7;
+
+}
+
+.wp_cart_button_wrapper input {
+
+	margin: 0;
+
+}
+
+.wpspsc_error_message {
+
+	color: red !important;
+
+	font-weight: bold;
+
+}
+
+.wpspsc_success_message {
+
+	color: green !important;
+
+	font-weight: bold;
+
+}
+
+/* product display specific CSS */
+
+
+
+.wp_cart_product_display_box {
+
+	border: 1px solid #E8E5DC;
+
+	box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.2);
+
+	margin-bottom: 25px;
+
+	padding-bottom: 5px;
+
+	width: 300px;
+
+}
+
+.wp_cart_product_thumbnail img {
+
+	max-width: 100%;
+
+}
+
+.wp_cart_product_display_bottom {
+
+	padding: 10px 15px;
+
+}
+
+.wp_cart_product_name {
+
+	color: #525351;
+
+	font-size: 16px;
+
+	font-weight: bold;
+
+	line-height: 20px;
+
+	margin: 0 0 10px 0;
+
+	text-transform: uppercase;
+
+}
+
+.wp_cart_product_description {
+
+	font-style: italic;
+
+}
+
+.wp_cart_product_price {
+
+	color: #525351;
+
+	display: block;
+
+	font-size: 22px;
+
+	font-weight: bold;
+
+	line-height: 24px;
+
+	margin: 0;
+
+	padding: 10px 10px 10px 0;
+
+}
+
+tr.wpspsc_checkout_form {
+
+text-align: right;
+
+}
+
+.wpspsc_coupon_section input[type="text"] {
+
+padding: 0;
+
+}
+.orangebuttonx {
+    display: inline-block;
+    text-align: center;
+    margin: 5px 5px 0 0;
+    padding: 9px;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    color: #fff !important;
+    border-radius: 3px;
+    background-color: #E44A32;
+    text-decoration: none !important;
+    outline: none !important;
+    visibility: visible;
+    border: none;
+    white-space: normal;
+    -webkit-box-shadow: 0 2px 0 #567ab4;
+    -moz-box-shadow: 0 2px 0 #567ab4;
+    box-shadow: 0 2px 0 #567ab4;
+}
+
+ul#breadcrumbs-one li {
+    display: inline;
+    padding-right: 10px;
+}
+
+/* end of product display specific CSS */
+

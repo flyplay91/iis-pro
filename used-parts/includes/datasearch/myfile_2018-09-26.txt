@@ -1,0 +1,1 @@
+253,'06294DL','A','SIERRA_2500_PICKUP','2001','true','2018-Sep-26 17:36:12'.'TX52,IISPRO-MA29','Visitor','Web Search'
